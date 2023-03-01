@@ -50,13 +50,14 @@ function OCRImagePicker({ handleResponse, handleLoading }) {
   }
 
   async function handleImagePick() {
-    handleLoading(true);
-
     const hasPermission = await verifyPermissions();
 
     if (!hasPermission) {
       return;
     }
+
+    handleResponse('');
+    handleLoading(true);
 
     let prepareResult = null;
 
