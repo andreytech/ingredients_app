@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Button, View, Platform, Text, ScrollView, ActivityIndicator } from 'react-native';
+import OCRImagePicker from './componets/OCRImagePicker';
 
 export default function App() {
+  const [ocrText, setOCRText] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <OCRImagePicker handleResponse={setOCRText} handleLoading={setIsLoading} />
+      {isLoading && <ActivityIndicator size="large" />}
+      
+      {!!ocrText && <ScrollView><Text>Распознанные ингредиенты:{ocrText.join(", ")}</Text></ScrollView>}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

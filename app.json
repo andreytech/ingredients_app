@@ -21,10 +21,27 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+      ],
+      "package": "com.presto5.ingredients"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you pick an existing image.",
+          "cameraPermission": "The app accesses your camera to let you take a photo."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "af1690d7-347d-43af-89df-226ff926ca1a"
+      }
     }
   }
 }
